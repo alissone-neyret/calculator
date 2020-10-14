@@ -1,0 +1,27 @@
+.calculator-display {
+    background-color: var(--dark-blue);
+    height: 9em;
+    width: 18.9em;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-right: 1em;   
+}
+
+.calculator-display-operation{
+    color: white;
+    font-size: 30px;
+    text-align: end;
+    opacity: 0.15;
+}
+
+.calculator-display-result{
+    color: white;
+    font-size: 50px;
+    margin-bottom: 0.2em;
+    margin-top: 0;
+    text-align: end;
+}
+

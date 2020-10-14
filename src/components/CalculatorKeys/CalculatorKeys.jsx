@@ -3,7 +3,6 @@ import "./CalculatorKeys.css";
 
 const CalculatorKeys = (props) => {
 
-  console.log("props", props)
   return (
     <div className="calculator-keys">
       <div className="calculator-keys__contain">

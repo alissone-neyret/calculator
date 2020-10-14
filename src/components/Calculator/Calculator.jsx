@@ -11,10 +11,16 @@ const Calculator = (props) => {
   const [numberTwo, setNumberTwo] = useState("");
   const [operator, setOperator] = useState("");
   const [showResult, setShowResult] = useState(false);
+  const [resetAfterResult, setResetAfterResult] = useState(false);
 
   const setValue = (value) => {
-
-    if (!numberOne) {
+    console.log("reset after result set value", resetAfterResult);
+    if (resetAfterResult) {
+      console.log("reset after result");
+      setOperation(value);
+      setNumberOne(value);
+      setResetAfterResult(false);
+    } else if (!numberOne) {
       setOperation(value);
       setNumberOne(value);
     } else if (!operator) {
@@ -23,14 +29,46 @@ const Calculator = (props) => {
       }
       setOperation(operation + value);
       setNumberOne(numberOne + value);
-
     } else if (operator) {
-
       if (numberTwo.indexOf(".") !== -1 && value === ".") {
         return "";
       }
       setOperation(operation + value);
       setNumberTwo(numberTwo + value);
+    }
+  };
+
+  const calculate = (value) => {
+    switch (operator) {
+      case "+":
+        setOperation(operation + value);
+
+        setNumberOne(parseFloat(numberOne) + parseFloat(numberTwo));
+        setNumberTwo("");
+        setOperator(value);
+        setShowResult(true);
+        break;
+      case "-":
+        setOperation(operation + value);
+        setNumberOne(parseFloat(numberOne) - parseFloat(numberTwo));
+        setNumberTwo("");
+        setOperator(value);
+        setShowResult(true);
+        break;
+      case "x":
+        setOperation(operation + value);
+        setNumberOne(parseFloat(numberOne) * parseFloat(numberTwo));
+        setNumberTwo("");
+        setOperator(value);
+        setShowResult(true);
+        break;
+      case "/":
+        setOperation(operation + value);
+        setNumberOne(parseFloat(numberOne) / parseFloat(numberTwo));
+        setNumberTwo("");
+        setOperator(value);
+        setShowResult(true);
+        break;
     }
   };
 
@@ -46,39 +84,14 @@ const Calculator = (props) => {
       }
       setOperator(value);
       setOperation(operation + value);
-
     } else if (numberTwo) {
-      switch (operator) {
-        case "+":
-          setOperation(operation + value);
+      console.log("operator", operator);
 
-          setNumberOne(parseFloat(numberOne) + parseFloat(numberTwo));
-          setNumberTwo("");
-          setOperator(value);
-          setShowResult(true);
-          break;
-        case "-":
-          setOperation(operation + value);
-          setNumberOne(parseFloat(numberOne) - parseFloat(numberTwo));
-          setNumberTwo("");
-          setOperator(value);
-          setShowResult(true);
-          break;
-        case "x":
-          setOperation(operation + value);
-          setNumberOne(parseFloat(numberOne) * parseFloat(numberTwo));
-          setNumberTwo("");
-          setOperator(value);
-          setShowResult(true);
-          break;
-        case "/":
-          setOperation(operation + value);
-          setNumberOne(parseFloat(numberOne) / parseFloat(numberTwo));
-          setNumberTwo("");
-          setOperator(value);
-          setShowResult(true);
-          break;
+      if (value === "=") {
+        calculate(value);
+        setResetAfterResult(true);
       }
+      return calculate(value);
     }
   };
 
@@ -90,6 +103,7 @@ const Calculator = (props) => {
     setShowResult(false);
   };
 
+  console.log("reset after result render", resetAfterResult);
 
   return (
     <div className="calculator">

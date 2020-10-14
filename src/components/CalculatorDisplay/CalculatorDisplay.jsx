@@ -4,7 +4,6 @@ import "./CalculatorDisplay.css";
 const CalculatorDisplay = (props) => {
   const { showResult, operation, result } = props;
 
-  console.log("props", props)
   return (
     <div className="calculator-display">
       <div>

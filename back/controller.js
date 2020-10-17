@@ -6,10 +6,8 @@ const calculateByOperator = (req, res) => {
 
   switch (operator) {
     case "+":
-      console.log("+");
       numberOne = parseFloat(numberOne) + parseFloat(numberTwo);
       result = numberOne;
-      console.log("result +", result)
       break;
     case "-":
       numberOne = parseFloat(numberOne) - parseFloat(numberTwo);
@@ -27,17 +25,6 @@ const calculateByOperator = (req, res) => {
   let response = { numberOne, numberTwo: "", result }
 
   res.json(response);
-};
-
-const calculate = (value) => {
-  if (!value) {
-    return false;
-  }
-
-  setOperation(operation + value);
-  setNumberTwo("");
-  setOperator(value);
-  setShowResult(true);
 };
 
 module.exports = { calculateByOperator };

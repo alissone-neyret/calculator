@@ -15,6 +15,10 @@ const Calculator = (props) => {
   const [showResult, setShowResult] = useState(false);
   const [resetAfterEqual, setResetAfterEqual] = useState(false);
 
+  /**
+   * Permet de définir/mettre à jour les valeurs des nombres un, deux et de l'opération mathématique
+   * @param {string} value La valeur à stocker
+   */
   const setValue = (value) => {
     if (resetAfterEqual) {
       setOperation(value);
@@ -39,13 +43,17 @@ const Calculator = (props) => {
     }
   };
 
+  /**
+   * Permet de définir/mettre à jour l'opérateur mathématique et lance la fonction de calcul
+   * @param {string} value
+   */
   const defineOperator = (value) => {
     if (!numberOne) {
       return false;
     }
 
     if (!numberTwo) {
-      console.log("pas de nombre 2")
+      console.log("pas de nombre 2");
       if (
         operation.indexOf("+") !== -1 ||
         operation.indexOf("-") !== -1 ||
@@ -59,40 +67,42 @@ const Calculator = (props) => {
       setResult(result + parseFloat(numberOne));
       setShowResult(true);
     } else if (numberTwo) {
-      if (value === "=") {
-        axios
-          .post(`http://localhost:3001/calculate`, {
-            numberOne,
-            numberTwo,
-            operator,
-          })
-          .then((res) => {
-            setOperation(operation + value);
-            setNumberTwo(numberTwo);
-            setOperator(value);
-            setOperation(operation + "=" + res.data.result);
-            setResult(res.data.result);
-            setResetAfterEqual(true);
-            setShowResult(true);
-          });
-      } else {       
-        axios
-          .post(`http://localhost:3001/calculate`, {
-            numberOne,
-            numberTwo,
-            operator,
-          })
-          .then((res) => {
-            setOperation(operation + value);
-            setResult(res.data.result);
-            setNumberOne(res.data.numberOne)
-            setNumberTwo(res.data.numberTwo)
-            setShowResult(true);
-          });
-      }
+      calculate(value);
     }
   };
 
+  /**
+   * Permet d'effectuer le calcul voulu et modifier les valeurs concernées
+   * @param {string} value 
+   */
+  const calculate = (value) => {
+    axios
+      .post(`http://localhost:3001/calculate`, {
+        numberOne,
+        numberTwo,
+        operator,
+      })
+      .then((res) => {
+        if (value === "=") {
+          console.log("res", res.data);
+          setOperation(operation + "=" + res.data.result);
+          setResult(res.data.result);
+          setNumberTwo(res.data.numberTwo);
+          setShowResult(true);
+          setResetAfterEqual(true);
+        } else {
+          setOperation(operation + value);
+          setResult(res.data.result);
+          setNumberOne(res.data.numberOne);
+          setNumberTwo(res.data.numberTwo);
+          setShowResult(true);
+        }
+      });
+  };
+
+  /**
+   * Permet de remettre les valeurs dans leur état initial
+   */
   const resetAll = () => {
     setOperation(0);
     setNumberOne("");
@@ -113,10 +123,6 @@ const Calculator = (props) => {
         handleClickNumber={(e) => setValue(e)}
         handleClickOperator={(e) => defineOperator(e)}
         handleClickReset={() => resetAll()}
-        numberOne={numberOne}
-        numberTwo={numberTwo}
-        result={result}
-        operator={operator}
       />
     </div>
   );

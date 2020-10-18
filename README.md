@@ -32,7 +32,7 @@ git clone "https://github.com/..."
 
 #### Etape 3 : NPM :cd:
 
-Il est maintenant temps d'installer les paquets nécessaires à la bonne exécution de la calculatrice. Placez-vous dans le dossier de la calculatrice puis exécutez la commande suivante : 
+Il est maintenant temps d'installer les paquets nécessaires à la bonne exécution de la calculatrice. Placez-vous dans le dossier de la calculatrice puis exécutez la commande suivante dans le dossier front **ET** dans le dossier back  : 
 
 ```
 npm install

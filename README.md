@@ -1,68 +1,81 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Calculatrice :1234:
 
-## Available Scripts
+### :bookmark: Sommaire
 
-In the project directory, you can run:
+* Description
+* Technologies utilisées
+* Installation
+* Utilisation de l'API
 
-### `npm start`
+## :clipboard: Description
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Calculatrice permettant de réaliser facilement des calculs mathématiques simples.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## :wrench: Technologies utilisées
 
-### `npm test`
+ReactJs / NodeJs / CSS
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## :floppy_disk: Installation
 
-### `npm run build`
+Pré-requis :
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* [NodeJS](http://localhost:3000)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### Etape 1 : Cloner le projet :two_women_holding_hands:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Depuis un terminal, placez-vous dans le dossier où vous souhaitez enregistrer le projet puis clonez-le :
 
-### `npm run eject`
+```
+cd "dossierOuStockerLeProjet"
+git clone "https://github.com/..."
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Etape 3 : NPM :cd:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Il est maintenant temps d'installer les paquets nécessaires à la bonne exécution de la calculatrice. Placez-vous dans le dossier de la calculatrice puis exécutez la commande suivante : 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Etape 4 : Lancement :rocket:
 
-## Learn More
+Félicitations vous avez réussi l'installation ! Deux dernières commandes à lancer et c'est à vous de jouer : 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Placez-vous dans le dossier back : 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+node app.js
+```
 
-### Code Splitting
+Dans un autre terminal, placez-vous dans le dossier front : 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```
+npm start
+```
+## :green_book: Utilisation de l'API
 
-### Analyzing the Bundle Size
+#### Fonctionnement
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+L'API permet de calculer une opération mathématique avec deux nombres et un opérateur.
 
-### Making a Progressive Web App
+#### Calcul d'une opération mathématique
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Récupère deux nombres et un opérateur :
+```
+{
+    "numberOne" : "1",
+    "numberTwo" : "2",
+    "operator" : "+"
+}
+```
 
-### Advanced Configuration
+Retourne les nouvelles valeurs des deux nombres ainsi que le résultat de l'opération : 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+{
+    "numberOne" : "3",
+    "numberTwo" : "",
+    "result" : "3"
+}
+```

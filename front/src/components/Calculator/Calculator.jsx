@@ -53,7 +53,6 @@ const Calculator = (props) => {
     }
 
     if (!numberTwo) {
-      console.log("pas de nombre 2");
       if (
         operation.indexOf("+") !== -1 ||
         operation.indexOf("-") !== -1 ||
@@ -84,7 +83,6 @@ const Calculator = (props) => {
       })
       .then((res) => {
         if (value === "=") {
-          console.log("res", res.data);
           setOperation(operation + "=" + res.data.result);
           setResult(res.data.result);
           setNumberTwo(res.data.numberTwo);

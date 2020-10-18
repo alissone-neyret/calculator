@@ -5,7 +5,6 @@ import "./CalculatorKeys.css";
 const CalculatorKeys = (props) => {
   useEffect(() => {
     document.addEventListener("keydown", function handleKeyDow(e) {
-      console.log("e", e)
       if(e.key === "7") {
         props.handleClickNumber("7");
       }          

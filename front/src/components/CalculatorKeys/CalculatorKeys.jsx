@@ -1,7 +1,17 @@
 import React from "react";
+import { useEffect } from "react";
 import "./CalculatorKeys.css";
 
 const CalculatorKeys = (props) => {
+  useEffect(() => {
+    document.addEventListener("keydown", function handleKeyDow(e) {
+      console.log("e", e)
+      if(e.key === "7") {
+        props.handleClickNumber("7");
+      }          
+    });
+  }, []);
+
   return (
     <div className="calculator-keys">
       <div className="calculator-keys__contain">

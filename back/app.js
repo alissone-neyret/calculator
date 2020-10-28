@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-router.post("/calculate", controller.calculateByOperator);
+router.get("/calculate", controller.calculateByOperator);
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
